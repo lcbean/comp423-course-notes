@@ -36,6 +36,7 @@ git init
 D. Create a README file for your Go project: 
 ```
 echo "# My first Go project" > README.md
+echo "Setup directions for development container and project from: https://github.com/lcbean/comp423-course-notes" >> README.md
 git add README.md
 git commit -m "Initial commit with README"
 ```
@@ -84,11 +85,11 @@ D. Back in your web browser, refresh your GitHub repository to see that the same
 
 ## Step 1: Add Development Container Configuration
 
-1. In VS Code, open the new-go-project directory you made previously. You can do this via: File > Open Folder. 
+A. In VS Code, open the new-go-project directory you made previously. You can do this via: File > Open Folder. 
 
-2. Install the **Dev Containers** extension for VS Code. 
+B. Install the **Dev Containers** extension for VS Code. 
 
-3. create a ```.devcontainer``` directory in the root of your project with the following file inside: 
+C. create a ```.devcontainer``` directory in the root of your project with the following file inside: 
 ```
 .devcontainer/devcontainer.json
 ```
@@ -120,7 +121,7 @@ Place the following code in your ```devcontainer.json``` file:
 
 A. Use the shortcut ```Ctrl+Shift+P``` (or ```Cmd+Shift+P``` on a Mac)
 
-B. Type "Dev Containers: Reopen in Container," and select the option when it comes up. Wait while the image is downloaded. 
+B. Starting typing "Dev Containers: Reopen in Container," and select the option when it comes up. **Note** it may take some time for the image to load.
 
 C. Once setup is complete, close the current terminal tab (you can click the trach can icon in VSCode), open a new terminal, and try running ```go version``` to ensure the dev container is running a recent version of Go.
 
@@ -129,16 +130,18 @@ C. Once setup is complete, close the current terminal tab (you can click the tra
 
 Now that you are working in your dev container, it's time to write a simple Hello World program. 
 
-1. Start by opening a terminal in your new-go-project directory
-2. Make sure you are working in your dev container! 
-3. Enable dependency tracking for your code with a go.mod file by running the ```go mod init``` command
+A. Start by opening a terminal in your new-go-project directory
+
+B. Make sure you are working in your dev container! **Hint:** You can check your dev container status by looking at the bright blue rectangle at the bottom left corner of your screen. If you are connected, it should say "Dev Container: ...".
+
+C. Enable dependency tracking for your code with a go.mod file by running the ```go mod init``` command
     * This gives it the name of the module your code will be in, in this case, the path to the github repository where your code is stored
 
 ``` got mod init https://github.com/<your-username>/new-go-project```
 
-4. In VSCode, create a file hello.go in which you will write your code
+D. In VSCode, create a file hello.go in which you will write your code
 
-5. Paste the following code into the hello.go file and save the file: 
+E. Paste the following code into the hello.go file and save the file: 
 ```
 
 package main
@@ -151,10 +154,10 @@ func main() {
 
 ```
 
-6. Go back to your terminal and run your code:
+F. Go back to your terminal and run your code:
 ``` go run . ```
 
-!!! Note: The go run command is one of many go commands you can use to get things done
+**Note:** The go run command is one of many go commands you can use to get things done
 
 
 
