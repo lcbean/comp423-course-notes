@@ -4,10 +4,13 @@ theme:
   features:
     - content.code.copy
     - content.code.annotate
+  features:
+    - content.code.copy
+    - content.code.annotate
 
-  markdown_extensions:
+markdown_extensions:
   - pymdownx.highlight:
-      anchor_lineums: true
+      anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - admonition
