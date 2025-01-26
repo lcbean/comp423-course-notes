@@ -3,6 +3,8 @@
 * Primary author: Lindsay Bean https://github/lcbean
 * Reviewer: Amelia Spell https://github.com/amspell04 
 
+In this tutorial, you will learn how to set up a dev container for the programming language Go, as well how to create your first Go project. We will go over how to create a git repository, set up your dev container, and run a simple "Hello COMP423" program in Go! 
+
 # Prerequisites
 
 Before beginning this tutorial, make sure you have:
@@ -46,30 +48,38 @@ git commit -m "Initial commit with README"
 A. Log in to your GitHub account and navigate to the [Create a New Repository](https://github.com/new) page. 
 
 B. Fill in the following details: 
-    * **Repository Name**: new-go-project
-    * **Description**: "My first Go project!"
-    * Visibility: Public
 
-C. Do not initialize the repository with a README, .gitignore, or license
+* **Repository Name**: new-go-project
+
+* **Description**: "My first Go project!"
+
+* **Visibility**: Public
+
+C. Do **not** initialize the repository with a README, .gitignore, or license
 
 D. Click **Create Repository** 
 
 
 ## Step 3: Link your Local Repository to GitHub
 
-A. Add the GitHub respository as a remote by running the following in your terminal: 
+A. Add the GitHub repository as a remote by running the following in your terminal: 
 
 ```
 git remote add origin https://github.com/<your-username>/new-go-project.git
 
 ```
 
+!!! note
+
+    Remember to plug in your username! 
+
 B. Check your default branch name with the subcommand ``` git branch ```. If it is not ```main```, rename it to ```main``` with the following command:
 
 ```
 git branch -M main
 ```
-!!! Note that old versions of ```git``` choose the name ```master``` for th primary branch, but these days ```main``` is the standard primary branch name. 
+!!! note 
+    Old versions of ```git``` choose the name ```master``` for th primary branch, but these days ```main``` is the standard primary branch name. 
 
 
 
@@ -89,17 +99,10 @@ A. In VS Code, open the new-go-project directory you made previously. You can do
 
 B. Install the **Dev Containers** extension for VS Code. 
 
-C. create a ```.devcontainer``` directory in the root of your project with the following file inside: 
+C. Create a ```.devcontainer``` directory in the root of your project with the following file inside: 
 ```
 .devcontainer/devcontainer.json
 ```
-
-The ```devcontainer.json``` file defines the configuration for your development environment. In this file, we are specifying the following: 
-
-* ```name```: Descriptive name for the dev container. 
-* ```image```: Which Docker image to use, in this case, a base image from Microsoft for the latest version of a Go environment
-* ```customizations```:  Adds useful configurations to VS Code, like installing the Go extension. 
-* ```postCreateCommand```: A command to run after the container is created. We will use ```go version``` to prove a recent version of Go
 
 Place the following code in your ```devcontainer.json``` file: 
 ```
@@ -109,21 +112,30 @@ Place the following code in your ```devcontainer.json``` file:
   "customizations": {
     "vscode": {
       "settings": {},
-      "extensions": ["ms-python.python"]
+      "extensions": ["ms-vscode.go"]
     }
-  },
-  "postCreateCommand": "go version",
+  }
 }
 
 ```
+
+!!! info "What does it all mean?"
+
+    The ```devcontainer.json``` file defines the configuration for your development environment. In this file, we are specifying the following: 
+
+    * ```name```: Descriptive name for the dev container. 
+    * ```image```: Which Docker image to use, in this case, a base image from Microsoft for the latest version of a Go environment
+    * ```customizations```:  Adds useful configurations to VS Code, like installing the Go extension. 
+    * ```extensions```: Installs any specified extensions automatically, in this case the official Go VSCode plugin made by the Go Team at Google
+    
 
 ## Step 2: Reopen the Project in a VSCode Dev Container
 
 A. Use the shortcut ```Ctrl+Shift+P``` (or ```Cmd+Shift+P``` on a Mac)
 
-B. Starting typing "Dev Containers: Reopen in Container," and select the option when it comes up. **Note** it may take some time for the image to load.
+B. Starting typing "Dev Containers: Reopen in Container," and select the option when it comes up. Note that it may take some time for the image to load.
 
-C. Once setup is complete, close the current terminal tab (you can click the trach can icon in VSCode), open a new terminal, and try running ```go version``` to ensure the dev container is running a recent version of Go.
+C. Once setup is complete, close the current terminal tab (you can click the trash can icon in VSCode), open a new terminal, and try running ```go version``` to ensure the dev container is running a recent version of Go.
 
 
 # Write Your first Project in Go!
@@ -132,16 +144,20 @@ Now that you are working in your dev container, it's time to write a simple Hell
 
 A. Start by opening a terminal in your new-go-project directory
 
-B. Make sure you are working in your dev container! **Hint:** You can check your dev container status by looking at the bright blue rectangle at the bottom left corner of your screen. If you are connected, it should say "Dev Container: ...".
+B. Make sure you are working in your dev container! 
+!!! tip "Hint"
+    You can check your dev container status by looking at the bright blue rectangle at the bottom left corner of your screen. If you are connected, it should say **"Dev Container: ..."**.
 
-C. Enable dependency tracking for your code with a go.mod file by running the ```go mod init``` command
-    * This gives it the name of the module your code will be in, in this case, the path to the github repository where your code is stored
+C. Enable dependency tracking for your code with a go.mod file by running the ```go mod init``` command, giving it the name, or path, of the module your code will be in. In this case, the path will be that of the github repository where your source code is kept. 
 
-``` got mod init https://github.com/<your-username>/new-go-project```
+``` go mod init https://github.com/<your-username>/new-go-project```
 
-D. In VSCode, create a file hello.go in which you will write your code
+!!! info "Why the go mod command?"
+    When your code imports packages contained in other modules, you manage those dependencies through your code's own module, which is defined by a ```go.mod``` file that tracks the modules that provide those packages. This file stays with your code, including in the source code repository. 
 
-E. Paste the following code into the hello.go file and save the file: 
+D. In your project directory in VSCode, create a file ```hello.go``` in which you will write your code
+
+E. Paste the following code into the ```hello.go``` file and save the file: 
 ```
 
 package main
@@ -149,24 +165,33 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Println("Hello, World!")
+    fmt.Println("Hello COMP423")
 }
 
 ```
 
+!!! info "How does this work?"
+    * Declare a main **package**, which is a way to group functions and is made up of all the files in directory.
+    * The fmt package contains functions for formatting text, including printing to the console.
+    * Implement a main function to print a message to the console. This will execute by default when you run the main package. 
+
 F. Go back to your terminal and run your code:
 ``` go run . ```
+This should output ```Hello COMP423``` 
 
-**Note:** The go run command is one of many go commands you can use to get things done
+**Note:** The go run command is one of many go commands you can use to get things done with Go. You can use ```go help``` to get a list of the others. 
 
+G. Alternatively, you can run ```go build```to compile the source code into an executable binary. 
 
+!!! tip 
+    For best practice, run ```go mod tidy``` to clean up unused dependencies before building
 
+!!! note 
+    If you do not provide an argument to the ```go build``` command, it will automatically compile the program in your current directory and include all ```.go``` files in the directory. In the case of this tutorial, the command will product an executable file named ```new-go-project```. Go automatically decides the name of the generated executable by using the module created earlier with ```go mod init```. If you want to specify the name of output file: ```go build -o insertname```. If you want to compile only ```hello.go```, run ```go build hello.go```
 
-
-
-
-
+* Now that you have created an executable, run ```./new-go-project```. The output of the binary should match the output from when you ran the program with ```go run .```: ```Hello COMP423```
 
 ## Sources: 
 * [Go Tutorial](https://go.dev/doc/tutorial/getting-started)
+* [How To Build and Install Go Programs](https://www.digitalocean.com/community/tutorials/how-to-build-and-install-go-programs)
 
