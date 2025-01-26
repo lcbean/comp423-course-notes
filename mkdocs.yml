@@ -13,3 +13,6 @@ theme:
   - pymdownx.details
   - pymdownx.betterem
   - pymdownx.blocks.caption
+  - footnotes
+  - pymdownx.keys
+  - pymdownx.betterem
