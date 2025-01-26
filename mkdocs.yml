@@ -1,3 +1,21 @@
 site_name: COMP423 Course Notes
 theme:
   name: material
+  features:
+    - content.code.copy
+    - content.code.annotate
+
+  markdown_extensions:
+  - pymdownx.highlight:
+      anchor_lineums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - admonition
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.betterem
+  - pymdownx.blocks.caption
+  - footnotes
+  - pymdownx.keys
+  - pymdownx.betterem
