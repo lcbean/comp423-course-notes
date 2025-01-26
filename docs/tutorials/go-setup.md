@@ -21,14 +21,13 @@ Before beginning this tutorial, make sure you have:
 
 ## Step 1: Create a Local Directory and Initialize Git
 
-A. Start by opening your terminal
+A. Start by opening your local terminal or command prompt
 
 B. Create a new directory for your project by running the following lines of code: 
 
 ```
 mkdir new-go-project
 cd new-go-project
-
 ```
 C. Initialize a git repository: 
 ```
@@ -38,7 +37,7 @@ git init
 D. Create a README file for your Go project: 
 ```
 echo "# My first Go project" > README.md
-echo "Setup directions for development container and project from: https://github.com/lcbean/comp423-course-notes" >> README.md
+echo "Instructions to setup development container thanks to: https://github.com/lcbean/comp423-course-notes" >> README.md
 git add README.md
 git commit -m "Initial commit with README"
 ```
