@@ -134,10 +134,15 @@ A. Use the shortcut ```Ctrl+Shift+P``` (or ```Cmd+Shift+P``` on a Mac)
 
 B. Start typing "Dev Containers: Reopen in Container" and select the option when it comes up. Note that it may take some time for the image to load once this option is selected.
 
-C. Once setup is complete, close the current terminal tab (you can click the trash can icon in VSCode), open a new terminal, and try running ```go version``` to ensure the dev container is running a recent version of Go.
+C. Once setup is complete, open a new VSCode terminal, and try running ```go version``` to ensure the dev container is running a recent version of Go.
 
 !!! note
     As of this tutorial, the output should be ```go version go1.23.4 linux/arm64```
+
+**Congratulations!** You have now successfully set up your Go dev container!
+
+!!! tip
+    When closing and reopening your project, you will need to make sure you reopen in the dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container. 
 
 
 # Write Your first Project in Go!
