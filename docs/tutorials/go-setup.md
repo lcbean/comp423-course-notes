@@ -37,7 +37,7 @@ git init
 D. Create a README file for your Go project: 
 ```
 echo "# My first Go project" > README.md
-echo "Instructions to setup development container thanks to: https://github.com/lcbean/comp423-course-notes" >> README.md
+echo "Instructions to setup development container thanks to: https://lcbean.github.io/comp423-course-notes/tutorials/go-setup/" >> README.md
 git add README.md
 git commit -m "Initial commit with README"
 ```
@@ -136,6 +136,9 @@ B. Starting typing "Dev Containers: Reopen in Container," and select the option 
 
 C. Once setup is complete, close the current terminal tab (you can click the trash can icon in VSCode), open a new terminal, and try running ```go version``` to ensure the dev container is running a recent version of Go.
 
+!!! note
+    As of this tutorial, the output should be ```go version go1.23.4 linux/arm64```
+
 
 # Write Your first Project in Go!
 
@@ -147,12 +150,12 @@ B. Make sure you are working in your dev container!
 !!! tip "Hint"
     You can check your dev container status by looking at the bright blue rectangle at the bottom left corner of your screen. If you are connected, it should say **"Dev Container: ..."**.
 
-C. Enable dependency tracking for your code with a go.mod file by running the ```go mod init``` command, giving it the name, or path, of the module your code will be in. In this case, the path will be that of the github repository where your source code is kept. 
+C. Enable dependency tracking for your code with a go.mod file by running the ```go mod init``` command, giving it the name, or path, of the module your code will be in. In this case, the path will be that of the the directory ```new-go-project``` where your source code is kept. 
 
-``` go mod init https://github.com/<your-username>/new-go-project```
+``` go mod init new-go-project```
 
 !!! info "Why the go mod command?"
-    When your code imports packages contained in other modules, you manage those dependencies through your code's own module, which is defined by a ```go.mod``` file that tracks the modules that provide those packages. This file stays with your code, including in the source code repository. 
+    When your code imports packages contained in other modules, you manage those dependencies through your code's own module, which is defined by a ```go.mod``` file that tracks the modules that provide those packages. This file stays with your code, including in the source code repository. The ```go mod``` command essentially tells Go that this is a Go module, and the ```go.mod``` file will contain the name of the module and what version of Go was used to build it. 
 
 D. In your project directory in VSCode, create a file ```hello.go``` in which you will write your code
 
@@ -189,6 +192,14 @@ G. Alternatively, you can run ```go build```to compile the source code into an e
     If you do not provide an argument to the ```go build``` command, it will automatically compile the program in your current directory and include all ```.go``` files in the directory. In the case of this tutorial, the command will product an executable file named ```new-go-project```. Go automatically decides the name of the generated executable by using the module created earlier with ```go mod init```. If you want to specify the name of output file: ```go build -o insertname```. If you want to compile only ```hello.go```, run ```go build hello.go```
 
 * Now that you have created an executable, run ```./new-go-project```. The output of the binary should match the output from when you ran the program with ```go run .```: ```Hello COMP423```
+
+H. Now, all that's left to do is commit and push your changes to your github repository! 
+
+``` 
+    git add . 
+    git commit -m "Hello COMP423"
+    git push origin main
+```
 
 ## Sources: 
 * [Go Tutorial](https://go.dev/doc/tutorial/getting-started)
